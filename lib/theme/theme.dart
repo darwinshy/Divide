@@ -1,11 +1,15 @@
+import 'package:divide/app/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 List<ThemeData> getThemeData() => [lightTheme, darkTheme];
 
 // Colors Palletes _______________________________________________________________
 
-Color primaryColor = const Color.fromRGBO(255, 137, 0, 1);
+// Color primaryColor = const Color.fromRGBO(255, 137, 0, 1);
+Color primaryColor = Colors.grey[800]!;
+
 Color white = Colors.white;
 Color black = Colors.black;
 Color blue = Colors.blue;
@@ -46,6 +50,17 @@ final darkTheme = ThemeData(
     inputDecorationTheme: inputDecorationTheme("dark"));
 
 // Decorations _________________________________________________________________
+
+void setupSnackbarUi() {
+  final service = locator<SnackbarService>();
+
+  // Registers a config to be used when calling showSnackbar
+  service.registerSnackbarConfig(SnackbarConfig(
+      textColor: offWhite,
+      mainButtonTextColor: offWhite,
+      messageColor: offWhite));
+}
+
 BottomAppBarTheme bottomAppBarTheme(String mode) {
   return BottomAppBarTheme(color: mode != "dark" ? offWhite : offBlack);
 }
@@ -57,7 +72,7 @@ BottomSheetThemeData bottomSheetTheme(String mode) {
 
 TextTheme contentTextTheme(String mode) {
   return TextTheme(
-      bodyText2: GoogleFonts.nunito(
+      bodyText2: GoogleFonts.openSans(
     color: mode != "dark" ? offBlack : offWhite,
   ));
 }
@@ -65,7 +80,6 @@ TextTheme contentTextTheme(String mode) {
 AppBarTheme appBarTheme(String mode) {
   return AppBarTheme(
       color: mode != "dark" ? offWhite : offBlack,
-      // textTheme: mode != "dark" ? textTheme("light") : textTheme("dark"),
       elevation: 0,
       iconTheme:
           mode != "dark" ? iconThemeData("light") : iconThemeData("dark"));
@@ -116,12 +130,12 @@ IconThemeData iconThemeData(String mode) {
 
 TextTheme textTheme(String mode) {
   return TextTheme(
-    bodyText1: GoogleFonts.nunito(
+    bodyText1: GoogleFonts.anton(
       color: mode == "dark" ? offWhite : offBlack,
       fontSize: 50,
     ),
-    headline6:
-        TextStyle(color: mode == "dark" ? offWhite : offBlack, fontSize: 15),
+    headline6: GoogleFonts.openSans(
+        color: mode == "dark" ? offWhite : offBlack, fontSize: 15),
   );
 }
 

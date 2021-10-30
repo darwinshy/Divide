@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:divide/theme/theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../app/size_configuration.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ ElevatedButton buildOutlineButton(text, function) {
   return ElevatedButton(
     style: ButtonStyle(
         shape: MaterialStateProperty.all<OutlinedBorder>(RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40.0),
+          borderRadius: BorderRadius.circular(10.0),
         )),
         backgroundColor: MaterialStateProperty.all<Color>(primaryColor)),
     onPressed: function,
@@ -68,6 +69,41 @@ ElevatedButton buildOutlineButtonCustomWidget(widget, function) {
     child: Padding(
         padding: EdgeInsets.all(getProportionateScreenHeight(15)),
         child: widget),
+  );
+}
+
+ElevatedButton buildOutlineButtonWithLoader() {
+  return ElevatedButton(
+    style: ButtonStyle(
+        shape: MaterialStateProperty.all<OutlinedBorder>(RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        )),
+        backgroundColor: MaterialStateProperty.all<Color>(primaryColor)),
+    onPressed: null,
+    child: Padding(
+        padding: EdgeInsets.all(getProportionateScreenHeight(15)),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenHeight(20), vertical: 2),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text("    "),
+              const SizedBox(
+                width: 25,
+                height: 25,
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.transparent,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              ),
+              const Text("    "),
+              SizedBox(
+                width: getProportionateScreenWidth(10),
+              ),
+            ],
+          ),
+        )),
   );
 }
 
@@ -139,7 +175,7 @@ AppBar buildAppBar(BuildContext context) {
           : null);
 }
 
-AppBar buildAppBarWithLogo(BuildContext context) {
+AppBar buildAppBarWithText(BuildContext context) {
   return AppBar(
       automaticallyImplyLeading: false,
       leading: Navigator.canPop(context)
@@ -151,8 +187,15 @@ AppBar buildAppBarWithLogo(BuildContext context) {
           : null,
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: Image.asset(logoPath, width: SizeConfig.screenWidth! / 4.5),
+          padding: const EdgeInsets.only(top: 15, right: 20),
+          child: Text(
+            "Divide",
+            style: GoogleFonts.anton(
+                color: Colors.teal,
+                fontSize: 20,
+                fontWeight: FontWeight.w300,
+                letterSpacing: 3),
+          ),
         )
       ]);
 }

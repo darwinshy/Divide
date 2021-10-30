@@ -1,5 +1,4 @@
 import 'package:divide/app/locator.dart';
-import 'package:divide/app/router.router.dart';
 import 'package:divide/screens/root/root_view.dart';
 import 'package:divide/widgets/dialog.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,6 +16,7 @@ void main() async {
 
   setupLocator();
   setupDialogUi();
+  setupSnackbarUi();
   runApp(const MyApp());
 }
 

@@ -3,8 +3,6 @@
 // and run the below command
 // flutter pub run build_runner build --delete-conflicting-outputs
 
-import 'package:auto_route/auto_route.dart';
-
 import 'package:divide/screens/nameScreen/name_screenview.dart';
 import 'package:divide/screens/root/root_view.dart';
 import 'package:divide/screens/signUpScreens/otpScreen/otp_screenview.dart';

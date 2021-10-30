@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:divide/services/services/data_from_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -30,16 +32,14 @@ class PhoneViewModel extends BaseViewModel {
   // __________________________________________________________________________
   // Helper Functions
   void startVerifyPhoneAuthentication() async {
-    phoneNumberFormKey.currentState!.save();
-    if (!phoneNumberFormKey.currentState!.validate()) return;
     setBusy(true);
+    phoneNumberFormKey.currentState!.save();
+    if (!phoneNumberFormKey.currentState!.validate()) {
+      return;
+    }
     await _storageService.setPhoneNumber(int.parse(phoneNumber.text));
-    await verifyPhoneAuthentication("+91" + phoneNumber.text);
-    setBusy(false);
+    await _authenticationService.verifyPhoneNumber("+91" + phoneNumber.text);
   }
-
-  Future verifyPhoneAuthentication(String phone) async =>
-      await _authenticationService.verifyPhoneNumber(phone);
 
   // __________________________________________________________________________
 }

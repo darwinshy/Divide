@@ -23,7 +23,7 @@ class _OTPScreenViewState extends State<OTPScreenView> {
     return ViewModelBuilder<OTPScreenViewModel>.reactive(
       builder: (context, model, child) {
         return Scaffold(
-          appBar: buildAppBar(context),
+          appBar: buildAppBarWithText(context),
           body: SafeArea(
               child: SingleChildScrollView(
             child: Padding(
@@ -125,36 +125,9 @@ class _OTPScreenViewState extends State<OTPScreenView> {
                                 ? null
                                 : model.startVerifingOTP,
                           )
-                        : buildOutlineButtonCustomWidget(
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: getProportionateScreenHeight(20),
-                                  vertical: 2),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Text("    "),
-                                  SizedBox(
-                                    width: 25,
-                                    height: 25,
-                                    child: CircularProgressIndicator(
-                                      backgroundColor: white,
-                                    ),
-                                  ),
-                                  const Text("    "),
-                                  SizedBox(
-                                    width: getProportionateScreenWidth(10),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            null),
+                        : buildOutlineButtonWithLoader(),
                     SizedBox(
                       height: getProportionateScreenHeight(60),
-                    ),
-                    const Text(
-                      "by clicking on continue, you are indicating that you have read and agree to our terms of use & privacy policy",
-                      style: TextStyle(fontSize: 14),
                     ),
                   ],
                 ),

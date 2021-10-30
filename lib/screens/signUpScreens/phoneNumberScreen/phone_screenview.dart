@@ -16,7 +16,7 @@ class PhoneScreenView extends StatelessWidget {
     return ViewModelBuilder<PhoneViewModel>.reactive(
         builder: (context, model, child) {
           return Scaffold(
-            appBar: buildAppBar(context),
+            appBar: buildAppBarWithText(context),
             body: SafeArea(
                 child: SingleChildScrollView(
                     child: Padding(
@@ -31,7 +31,7 @@ class PhoneScreenView extends StatelessWidget {
                       height: getProportionateScreenHeight(20),
                     ),
                     const Text(
-                      "Welcome,",
+                      "Welcome",
                       style: TextStyle(fontSize: 30),
                     ),
                     SizedBox(
@@ -52,7 +52,7 @@ class PhoneScreenView extends StatelessWidget {
                               model.validatePhoneNumber(value!),
                           maxLength: 10,
                           maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                          keyboardType: TextInputType.phone,
+                          keyboardType: TextInputType.number,
                           decoration: buildInputDecoration(
                               "Mobile Number",
                               Icon(
@@ -61,40 +61,13 @@ class PhoneScreenView extends StatelessWidget {
                               )),
                           controller: model.phoneNumber,
                         )),
-                    Spacer(),
+                    const Spacer(),
                     !model.isBusy
                         ? buildOutlineButton(
                             "Continue", model.startVerifyPhoneAuthentication)
-                        : buildOutlineButtonCustomWidget(
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: getProportionateScreenHeight(20),
-                                  vertical: 2),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Text("    "),
-                                  SizedBox(
-                                    width: 25,
-                                    height: 25,
-                                    child: CircularProgressIndicator(
-                                      backgroundColor: white,
-                                    ),
-                                  ),
-                                  const Text("    "),
-                                  SizedBox(
-                                    width: getProportionateScreenWidth(10),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            null),
+                        : buildOutlineButtonWithLoader(),
                     SizedBox(
                       height: getProportionateScreenHeight(60),
-                    ),
-                    const Text(
-                      "by clicking on continue, you are indicating that you have read and agree to our terms of use & privacy policy",
-                      style: TextStyle(fontSize: 14),
                     ),
                   ],
                 ),

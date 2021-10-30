@@ -38,11 +38,14 @@ class AuthenticationService {
       // Routes to the Root to reroute to signup screens
       // if user is logged in
       if (currentUser!.uid.isNotEmpty) {
-        await _dialogService.showCustomDialog(
-            variant: DialogType.confirm,
-            barrierDismissible: false,
-            mainButtonTitle: "OK",
-            description: "You have been signed in. Press OK to continue");
+        // await _dialogService.showCustomDialog(
+        //     variant: DialogType.confirm,
+        //     barrierDismissible: false,
+        //     mainButtonTitle: "OK",
+        //     description: "You have been signed in. Press OK to continue");
+        _snackbarService.showSnackbar(
+            message: "Logged in successful !",
+            duration: const Duration(seconds: 2));
         _navigatorService.clearStackAndShow(Root.routeName);
       }
     } catch (authException) {
@@ -135,19 +138,19 @@ class AuthenticationService {
       // ----------------------------------------------------------------------
       // Function to call signin with credential which returns the verfication
       // Id in the callback function "codeAutoRetrievalTimeout"
-      void verificationCompleted(
+      Future verificationCompleted(
           PhoneAuthCredential phoneAuthCredential) async {
         await _firebaseAuth.signInWithCredential(phoneAuthCredential);
         final User currentUser = _firebaseAuth.currentUser!;
         // Routes to the Root to reroute to signup screens
         // If user is logged in
         if (currentUser.uid.isNotEmpty) {
-          await _dialogService.showCustomDialog(
-              variant: DialogType.confirm,
-              barrierDismissible: false,
-              mainButtonTitle: "OK",
-              description:
-                  "We have detected the OTP and autoverified you and automatically signed you in.\nPress OK to continue");
+          // await _dialogService.showCustomDialog(
+          //     variant: DialogType.confirm,
+          //     barrierDismissible: false,
+          //     mainButtonTitle: "OK",
+          //     description:
+          //         "We have detected the OTP and autoverified you and automatically signed you in.\nPress OK to continue");
           _navigatorService.clearStackAndShow(Root.routeName);
         }
       }
@@ -165,9 +168,10 @@ class AuthenticationService {
         );
       }
 
+      //8739078018
       // ----------------------------------------------------------------------
       // Notification function for verification Id.
-      void codeSent(String verificationId, [int? forceResendingToken]) async {
+      Future codeSent(String verificationId, [int? forceResendingToken]) async {
         log('Please check your phone for the verification code.\n' +
             verificationId);
         _verificationId = verificationId;
@@ -177,7 +181,7 @@ class AuthenticationService {
 
       // ----------------------------------------------------------------------
       // Function to retrive verification ID from the firebase
-      void codeAutoRetrievalTimeout(String verificationId) {
+      Future codeAutoRetrievalTimeout(String verificationId) async {
         _verificationId = verificationId;
       }
 
