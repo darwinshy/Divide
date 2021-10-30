@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "892217436101",
+    "project_id": "divide-fd1fa",
+    "storage_bucket": "divide-fd1fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892217436101:android:bb813b16d6a8e266118dac",
+        "android_client_info": {
+          "package_name": "com.divide.divide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892217436101-7l7d723ap49d624om2fun4cehqnnhme1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp4esmj2viHIPv4Az_lZ5SwBxkCct7Xbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892217436101-7l7d723ap49d624om2fun4cehqnnhme1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
