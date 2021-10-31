@@ -9,6 +9,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../screens/addBills/addbills_screenview.dart';
 import '../screens/nameScreen/name_screenview.dart';
 import '../screens/root/root_view.dart';
 import '../screens/signUpScreens/otpScreen/otp_screenview.dart';
@@ -21,12 +22,14 @@ class Routes {
   static const String oTPScreenView = '/otpScreenView';
   static const String nameScreenView = '/nameScreenView';
   static const String welcomeScreenView = '/welcomeScreenView';
+  static const String addBillView = '/addBillView';
   static const all = <String>{
     root,
     phoneScreenView,
     oTPScreenView,
     nameScreenView,
     welcomeScreenView,
+    addBillView,
   };
 }
 
@@ -39,6 +42,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.oTPScreenView, page: OTPScreenView),
     RouteDef(Routes.nameScreenView, page: NameScreenView),
     RouteDef(Routes.welcomeScreenView, page: WelcomeScreenView),
+    RouteDef(Routes.addBillView, page: AddBillView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -70,6 +74,12 @@ class StackedRouter extends RouterBase {
     WelcomeScreenView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const WelcomeScreenView(),
+        settings: data,
+      );
+    },
+    AddBillView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const AddBillView(),
         settings: data,
       );
     },

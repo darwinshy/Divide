@@ -58,6 +58,25 @@ ElevatedButton buildOutlineButton(text, function) {
   );
 }
 
+ElevatedButton buildSimpleOutlineButton(text, function) {
+  return ElevatedButton(
+    style: ButtonStyle(
+        shape: MaterialStateProperty.all<OutlinedBorder>(RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        )),
+        backgroundColor: MaterialStateProperty.all<Color>(primaryColor)),
+    onPressed: function,
+    child: Padding(
+      padding: EdgeInsets.all(getProportionateScreenHeight(15)),
+      child: Text(
+        text,
+        style: const TextStyle(
+            color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w400),
+      ),
+    ),
+  );
+}
+
 ElevatedButton buildOutlineButtonCustomWidget(widget, function) {
   return ElevatedButton(
     style: ButtonStyle(

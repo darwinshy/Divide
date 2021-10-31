@@ -1,3 +1,5 @@
+import 'package:divide/screens/nameScreen/name_screenview.dart';
+import 'package:divide/screens/welcomeScreen/welcome_screenview.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -30,7 +32,7 @@ class NameViewModel extends BaseViewModel {
     nameFormKey.currentState!.save();
     if (!nameFormKey.currentState!.validate()) return;
     await _storageService.setName(name.text);
-
+    _navigatorService.pushNamedAndRemoveUntil(WelcomeScreenView.routeName);
     // Create user
   }
 

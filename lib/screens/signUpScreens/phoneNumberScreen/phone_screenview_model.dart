@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:divide/services/services/data_from_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

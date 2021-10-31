@@ -8,7 +8,7 @@ List<ThemeData> getThemeData() => [lightTheme, darkTheme];
 // Colors Palletes _______________________________________________________________
 
 // Color primaryColor = const Color.fromRGBO(255, 137, 0, 1);
-Color primaryColor = Colors.grey[800]!;
+Color primaryColor = Colors.grey[900]!;
 
 Color white = Colors.white;
 Color black = Colors.black;
