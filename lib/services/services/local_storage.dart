@@ -46,24 +46,28 @@ class StorageService {
     SharedPreferences _localStorage = await SharedPreferences.getInstance();
     _uid = uid;
     await _localStorage.setString(uidLocalStorageKey, _uid!);
+    log(uid.toString() + " saved");
   }
 
   Future setName(String name) async {
     SharedPreferences _localStorage = await SharedPreferences.getInstance();
     _name = name;
     await _localStorage.setString(nameLocalStorageKey, _name!);
+    log(name.toString() + " saved");
   }
 
   Future setUPI(String upi) async {
     SharedPreferences _localStorage = await SharedPreferences.getInstance();
     _upiId = upi;
     await _localStorage.setString(upiIdLocalStorageKey, _upiId!);
+    log(upi.toString() + " saved");
   }
 
   Future setPhoneNumber(int phone) async {
     SharedPreferences _localStorage = await SharedPreferences.getInstance();
     _phoneNumber = phone;
     await _localStorage.setInt(phoneNumberLocalStorageKey, _phoneNumber!);
+    log(phone.toString() + " saved");
   }
 
 // ...........................................................................

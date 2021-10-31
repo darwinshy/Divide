@@ -1,4 +1,6 @@
+import 'package:divide/screens/welcomeScreen/welcome_screenview.dart';
 import 'package:divide/services/services/api_service.dart';
+import 'package:divide/services/services/data_from_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
@@ -10,6 +12,7 @@ class AddBillViewModel extends BaseViewModel {
   // Locating the Dependencies
   final NavigationService _navigatorService = locator<NavigationService>();
   final APIServices _aPIServices = locator<APIServices>();
+  final DataFromApi _dataFromApiService = locator<DataFromApi>();
   // _________________________________________________________________________
   // Controllers
   final formKey = GlobalKey<FormState>();
@@ -81,9 +84,10 @@ class AddBillViewModel extends BaseViewModel {
         billAmount: int.parse(bAmount.text),
         billCategory: bCategory.text,
         billDate: _selectedDueDate!);
+    await _dataFromApiService.setUser();
 
     setBusy(false);
-    _navigatorService.popRepeated(1);
+    _navigatorService.pushNamedAndRemoveUntil(WelcomeScreenView.routeName);
   }
 
   // _________________________________________________________________________

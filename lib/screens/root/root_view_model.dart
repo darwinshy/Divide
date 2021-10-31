@@ -41,7 +41,8 @@ class RootViewModel extends BaseViewModel {
       log("*----------------------------------------------------------------*");
       // ---------------------------------------------------------------------
       if (hasLoggedIn) {
-        if (_storageService.getName == null) {
+        if (_storageService.getName == null &&
+            _storageService.getUpiId == null) {
           // ___________________________________________________________________
           _navigatorService.clearStackAndShow(NameScreenView.routeName);
           // ___________________________________________________________________
@@ -51,12 +52,10 @@ class RootViewModel extends BaseViewModel {
           await _dataFromApiService.setBillGroupList();
           await _dataFromApiService.setPeerList();
           // ___________________________________________________________________
-          _navigatorService.pushNamedAndRemoveUntil(WelcomeScreenView.routeName,
-              predicate: (_) => false);
+          _navigatorService.clearStackAndShow(WelcomeScreenView.routeName);
         }
       } else {
-        _navigatorService.pushNamedAndRemoveUntil(PhoneScreenView.routeName,
-            predicate: (_) => false);
+        _navigatorService.clearStackAndShow(PhoneScreenView.routeName);
       }
     } catch (e) {
       log("At Handle Startup Logic : " + e.toString());

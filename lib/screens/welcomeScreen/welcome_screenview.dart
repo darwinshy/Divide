@@ -46,7 +46,7 @@ class WelcomeScreenView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            model.data!["name"]!,
+                            model.data != null ? model.data!["name"]! : "",
                             style: const TextStyle(fontSize: 28),
                           ),
                           Column(

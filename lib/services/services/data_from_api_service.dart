@@ -34,9 +34,12 @@ class DataFromApi {
   //-------------------------------------------------------------------
   Future setUser() async {
     String? uid = _storageService.getUID;
-    User? user = await _apiServices.getUser(uid);
-    _user = user;
-    log("DATA FROM API : " + user!.toJson().toString());
+
+    if (uid != null) {
+      User? user = await _apiServices.getUser(uid);
+      _user = user;
+      log("DATA FROM API : " + user!.toJson().toString());
+    }
   }
 
   Future setUserExplicit(User user) async {

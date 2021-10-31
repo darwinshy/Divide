@@ -62,10 +62,8 @@ class APIServices {
       log("User created with user id : " + responseJson["_id"].toString());
       // _______________________________________________________________________
       User user = User.fromJson(responseJson);
-
       log(user.toJson().toString());
 
-      _storageService.setUID(user.sId!);
       // _______________________________________________________________________
       return user;
     } catch (e) {
@@ -161,7 +159,7 @@ class APIServices {
       var responseJson = json.decode(responseString);
       // _______________________________________________________________________
       log("AT ADD BILL : " + responseJson.toString());
-      await _dataFromApi.setUser();
+
       // _______________________________________________________________________
       return Bill.fromJson(responseJson);
     } catch (e) {

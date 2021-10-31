@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:divide/model/user.dart';
 import 'package:divide/screens/root/root_view.dart';
 import 'package:divide/screens/welcomeScreen/welcome_screenview.dart';
 import 'package:divide/services/services/api_service.dart';
@@ -41,10 +42,13 @@ class NameViewModel extends BaseViewModel {
     await _storageService.setName(name.text);
     await _storageService.setUPI(upi.text);
 
-    await _aPIServices.createUser();
-    _navigatorService.pushNamedAndRemoveUntil(Root.routeName);
+    User? user = await _aPIServices.createUser();
+
+    if (user != null) {
+      _storageService.setUID(user.sId!);
+      _navigatorService.clearStackAndShow(Root.routeName);
+    }
     setBusy(false);
-    // Create user
   }
 
   // _________________________________________________________________________
