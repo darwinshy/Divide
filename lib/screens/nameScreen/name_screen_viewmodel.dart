@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:divide/model/user.dart';
 import 'package:divide/screens/root/root_view.dart';
-import 'package:divide/screens/welcomeScreen/welcome_screenview.dart';
 import 'package:divide/services/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

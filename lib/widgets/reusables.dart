@@ -174,7 +174,7 @@ TextButton
               vertical: getProportionateScreenHeight(10),
               horizontal: getProportionateScreenWidth(5)),
         ),
-        minimumSize: MaterialStateProperty.all<Size>(Size(100.0, 50.0)),
+        minimumSize: MaterialStateProperty.all<Size>(const Size(100.0, 50.0)),
         backgroundColor: MaterialStateProperty.all<Color>(offWhite2),
         overlayColor: MaterialStateProperty.all<Color>(bgColor),
       ), // color: bgColor,
