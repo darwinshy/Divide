@@ -16,7 +16,7 @@ class APIServices {
   // ___________________________________________________________________________
   // Variables for API
   // String url = "http://7ed9-2401-4900-3b17-cb6b-fcf1-52d6-cf1d-ab7a.ngrok.io/";
-  String url = "http://studentazure.eastus.cloudapp.azure.com:3000/";
+  String url = "http://divide.eastus.cloudapp.azure.com:3000/";
   // -------------------------------------------------------------
   // User
   String urlUserCreate = "users/newUser";
@@ -286,17 +286,16 @@ class APIServices {
       // _______________________________________________________________________
       // Sending the post request
       var response = await request.send();
-      var responseString = await response.stream.bytesToString();
-      var responseJson = json.decode(responseString);
-      // _______________________________________________________________________
-      log("AT UPDATE BILL : " + responseJson.toString());
 
       // _______________________________________________________________________
+      log("AT UPDATE BILL : " + response.statusCode.toString());
       return;
+      // _______________________________________________________________________
+
     } catch (e) {
       log("AT UPDATE BILL : " + e.toString());
       _snackBarService.showSnackbar(message: e.toString());
-      return null;
+      return;
     }
   }
 

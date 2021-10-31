@@ -57,7 +57,7 @@ class AddBillViewModel extends BaseViewModel {
         context: context,
         initialDate: _selectedDueDate ?? DateTime.now(),
         firstDate: DateTime(2000, 1),
-        lastDate: DateTime.now());
+        lastDate: DateTime(2050, 1));
 
     if (picked != null && picked != _selectedDueDate) {
       _selectedDueDate = picked;

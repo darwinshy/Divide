@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:divide/model/bill.dart';
 import 'package:divide/model/bill_status.dart';
 import 'package:divide/model/user.dart';
@@ -108,8 +110,9 @@ class BillViewModel extends BaseViewModel {
     data['shares'] = shared;
 
     await _aPIServices.updateBill(data);
-    _navigatorService.popRepeated(1);
+    log("bhosdike ho gaya");
     setBusy(false);
+    _navigatorService.popRepeated(1);
   }
 
   // _________________________________________________________________________

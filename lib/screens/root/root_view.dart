@@ -14,8 +14,29 @@ class Root extends StatelessWidget {
     SizeConfig().init(context);
     return ViewModelBuilder<RootViewModel>.reactive(
       builder: (context, child, model) {
-        return const Scaffold(
-          body: Center(child: CircularProgressIndicator()),
+        return Scaffold(
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Center(child: CircularProgressIndicator()),
+                Column(
+                  children: const [
+                    Text("made by"),
+                    SizedBox(height: 20),
+                    Text(
+                      "Shashwat Priyadarshy",
+                      style: TextStyle(letterSpacing: 3),
+                    ),
+                    Text(
+                      "Daniyal Mahmood",
+                      style: TextStyle(letterSpacing: 3),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
         );
       },
       onModelReady: (model) => model.handleStartupLogic(),

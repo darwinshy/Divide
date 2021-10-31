@@ -55,14 +55,14 @@ class WelcomeScreenView extends StatelessWidget {
                               InkWell(
                                 onTap: model.navigateToAddBill,
                                 child: const Text("Add Bills",
-                                    style: TextStyle(color: Colors.grey)),
+                                    style: TextStyle(color: Colors.blueGrey)),
                               ),
                               SizedBox(
                                   height: getProportionateScreenHeight(10)),
                               InkWell(
                                 onTap: () => model.openAddFriendPopUp(context),
                                 child: const Text("Add Friends",
-                                    style: TextStyle(color: Colors.grey)),
+                                    style: TextStyle(color: Colors.blueGrey)),
                               ),
                             ],
                           )
@@ -75,7 +75,7 @@ class WelcomeScreenView extends StatelessWidget {
                           model.data!["bills"]!.isNotEmpty)
                         Column(
                           children: [
-                            if (model.isBusy)
+                            if (model.isBillLoading)
                               const LinearProgressIndicator(
                                 backgroundColor: Colors.teal,
                                 minHeight: 5,
@@ -134,10 +134,6 @@ class WelcomeScreenView extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
                                           children: [
-                                            const Text("700",
-                                                style: TextStyle(
-                                                    color: Colors.black87,
-                                                    fontSize: 12)),
                                             Text(
                                                 (model.data!["bills"]![index]
                                                         as UserBills)

@@ -66,11 +66,13 @@ class WelcomeScreenViewModel extends FutureViewModel<Map<String, dynamic>> {
         builder: (context) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 10),
               child: SizedBox.expand(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: friends.length,
-                      itemBuilder: (builder, index) =>
-                          buildFreindList(friends, index))),
+                  child: friends.isNotEmpty
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: friends.length,
+                          itemBuilder: (builder, index) =>
+                              buildFreindList(friends, index))
+                      : const Center(child: Text("No Friends yet"))),
             ));
   }
 
@@ -192,9 +194,11 @@ class WelcomeScreenViewModel extends FutureViewModel<Map<String, dynamic>> {
   void goToBillDetails(String s) async {
     try {
       isBillLoading = !isBillLoading;
+      notifyListeners();
       await _dataFromApi.setBill(s);
       await _dataFromApi.setBillStatus(_dataFromApi.getUser!.sId!, s);
       isBillLoading = !isBillLoading;
+      notifyListeners();
       _navigatorService.navigateTo(BillView.routeName);
     } catch (e) {
       _snackBarService.showSnackbar(message: e.toString());
