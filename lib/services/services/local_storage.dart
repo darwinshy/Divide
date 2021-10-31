@@ -16,8 +16,8 @@ class StorageService {
   static String? _name;
   String? get getName => _name;
   // ...........................................................................
-  static String? _emailAddress;
-  String? get getEmailAddress => _emailAddress;
+  static String? _upiId;
+  String? get getUpiId => _upiId;
   // ...........................................................................
   // ___________________________________________________________________________
   // Assign the variables if present
@@ -32,7 +32,7 @@ class StorageService {
       // .......................................................................
       _name = _localStorage.getString(nameLocalStorageKey);
       // .......................................................................
-      _emailAddress = _localStorage.getString(emailAddressLocalStorageKey);
+      _upiId = _localStorage.getString(upiIdLocalStorageKey);
       // .......................................................................
     } catch (e) {
       log("Inititialising Local Storage Failed :  " + e.toString());
@@ -54,36 +54,36 @@ class StorageService {
     await _localStorage.setString(nameLocalStorageKey, _name!);
   }
 
+  Future setUPI(String upi) async {
+    SharedPreferences _localStorage = await SharedPreferences.getInstance();
+    _upiId = upi;
+    await _localStorage.setString(upiIdLocalStorageKey, _upiId!);
+  }
+
   Future setPhoneNumber(int phone) async {
     SharedPreferences _localStorage = await SharedPreferences.getInstance();
     _phoneNumber = phone;
     await _localStorage.setInt(phoneNumberLocalStorageKey, _phoneNumber!);
   }
 
-  Future setEmailAddress(String emailAddress) async {
-    SharedPreferences _localStorage = await SharedPreferences.getInstance();
-    _emailAddress = emailAddress;
-    await _localStorage.setString(emailAddressLocalStorageKey, _emailAddress!);
-  }
-
 // ...........................................................................
   Future setUserDetails({
     required String name,
     required int phone,
-    required String emailAddress,
     required String uid,
+    required String upiId,
   }) async {
     SharedPreferences _localStorage = await SharedPreferences.getInstance();
 
     _uid = uid;
     _phoneNumber = phone;
-    _emailAddress = emailAddress;
     _name = name;
+    _upiId = upiId;
 
     await _localStorage.setString(uidLocalStorageKey, uid);
     await _localStorage.setInt(phoneNumberLocalStorageKey, phone);
-    await _localStorage.setString(emailAddressLocalStorageKey, emailAddress);
     await _localStorage.setString(nameLocalStorageKey, name);
+    await _localStorage.setString(upiIdLocalStorageKey, upiId);
   }
 
 // _____________________________________________________________________________
@@ -104,6 +104,11 @@ class StorageService {
     return _localStorage.getString(nameLocalStorageKey);
   }
 
+  Future<String?> getUpiIdFromLocal() async {
+    SharedPreferences _localStorage = await SharedPreferences.getInstance();
+    return _localStorage.getString(upiIdLocalStorageKey);
+  }
+
 // .............................................................................
 // _____________________________________________________________________________
 // Getter for all user details from local
@@ -115,8 +120,7 @@ class StorageService {
       phoneNumberLocalStorageKey:
           _localStorage.getInt(phoneNumberLocalStorageKey).toString(),
       nameLocalStorageKey: _localStorage.getString(nameLocalStorageKey)!,
-      emailAddressLocalStorageKey:
-          _localStorage.getString(emailAddressLocalStorageKey)!,
+      upiIdLocalStorageKey: _localStorage.getString(upiIdLocalStorageKey)!
     };
   }
 
@@ -125,7 +129,7 @@ class StorageService {
     _uid = null;
     _phoneNumber = null;
     _name = null;
-    _emailAddress = null;
+    _upiId = null;
   }
   // ___________________________________________________________________________
 }

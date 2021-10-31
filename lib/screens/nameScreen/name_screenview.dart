@@ -25,7 +25,7 @@ class NameScreenView extends StatelessWidget {
               child: SizedBox(
                 height: SizeConfig.screenHeight! * 0.8,
                 child: Form(
-                  key: model.nameFormKey,
+                  key: model.formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,10 +84,12 @@ class NameScreenView extends StatelessWidget {
                               Icons.attach_money_rounded,
                               color: primaryColor,
                             )),
-                        controller: model.name,
+                        controller: model.upi,
                       ),
                       const Spacer(),
-                      buildOutlineButton("Continue", model.saveName),
+                      !model.isBusy
+                          ? buildOutlineButton("Continue", model.saveName)
+                          : buildOutlineButtonWithLoader(),
                       SizedBox(
                         height: getProportionateScreenHeight(60),
                       ),

@@ -1,3 +1,4 @@
+import 'package:divide/services/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
@@ -8,6 +9,7 @@ class AddBillViewModel extends BaseViewModel {
   // _________________________________________________________________________
   // Locating the Dependencies
   final NavigationService _navigatorService = locator<NavigationService>();
+  final APIServices _aPIServices = locator<APIServices>();
   // _________________________________________________________________________
   // Controllers
   final formKey = GlobalKey<FormState>();
@@ -72,6 +74,14 @@ class AddBillViewModel extends BaseViewModel {
       setBusy(false);
       return;
     }
+
+    await _aPIServices.addBill(
+        billShare: _bPartition == "Equal" ? true : false,
+        billName: bName.text,
+        billAmount: int.parse(bAmount.text),
+        billCategory: bCategory.text,
+        billDate: _selectedDueDate!);
+
     setBusy(false);
     _navigatorService.popRepeated(1);
   }

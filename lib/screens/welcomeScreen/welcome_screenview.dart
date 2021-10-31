@@ -1,4 +1,4 @@
-import 'package:divide/theme/theme.dart';
+import 'package:divide/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../widgets/reusables.dart';
@@ -71,63 +71,77 @@ class WelcomeScreenView extends StatelessWidget {
                       SizedBox(
                         height: getProportionateScreenHeight(30),
                       ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: SizeConfig.screenHeight! * 0.6,
-                            child: ListView.builder(
-                              primary: true,
-                              shrinkWrap: true,
-                              itemCount: 10,
-                              itemBuilder: (builder, index) {
-                                return Container(
-                                    padding: const EdgeInsets.all(10),
-                                    margin: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Colors.white60),
-                                    child: ListTile(
-                                      minVerticalPadding: 15,
-                                      leading: const Icon(Icons.pending_actions,
-                                          color: Colors.redAccent, size: 30),
-                                      title: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: const [
-                                          Text("Bill Name",
-                                              style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 12)),
-                                          Text("Shilong Trip",
-                                              style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 20))
-                                        ],
-                                      ),
-                                      trailing: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: const [
-                                          Text("700",
-                                              style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 12)),
-                                          Text("25000",
-                                              style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 20))
-                                        ],
-                                      ),
-                                    ));
-                              },
+                      if (model.data!["bills"] != null &&
+                          model.data!["bills"]!.isNotEmpty)
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: SizeConfig.screenHeight! * 0.6,
+                              child: ListView.builder(
+                                primary: true,
+                                shrinkWrap: true,
+                                itemCount: model.data!["bills"]!.length,
+                                itemBuilder: (builder, index) {
+                                  return Container(
+                                      padding: const EdgeInsets.all(10),
+                                      margin: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.white60),
+                                      child: ListTile(
+                                        minVerticalPadding: 15,
+                                        leading: const Icon(
+                                            Icons.pending_actions,
+                                            color: Colors.redAccent,
+                                            size: 30),
+                                        title: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text("Bill Name",
+                                                style: TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 12)),
+                                            Text(
+                                                (model.data!["bills"]![index]
+                                                        as UserBills)
+                                                    .billName!,
+                                                style: const TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 20))
+                                          ],
+                                        ),
+                                        trailing: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            const Text("700",
+                                                style: TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 12)),
+                                            Text(
+                                                (model.data!["bills"]![index]
+                                                        as UserBills)
+                                                    .amount
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 20))
+                                          ],
+                                        ),
+                                      ));
+                                },
+                              ),
                             ),
-                          ),
-                        ],
-                      )
+                          ],
+                        )
+                      else
+                        const Text("No bills found")
                     ],
                   ),
                 ),

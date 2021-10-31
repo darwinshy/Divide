@@ -33,9 +33,10 @@ class RootViewModel extends BaseViewModel {
       await _storageService.initLocalStorages();
 
       log("*----------------------------------------------------------------*");
+      log("ID           : " + _storageService.getUID.toString());
       log("Name         : " + _storageService.getName.toString());
       log("Phone        : " + _storageService.getPhoneNumber.toString());
-      log("Email        : " + _storageService.getEmailAddress.toString());
+      log("UpiID        : " + _storageService.getUpiId.toString());
       log("HasLoggedIn  : " + hasLoggedIn.toString());
       log("*----------------------------------------------------------------*");
       // ---------------------------------------------------------------------
@@ -46,6 +47,7 @@ class RootViewModel extends BaseViewModel {
           // ___________________________________________________________________
         } else {
           // ___________________________________________________________________
+          await _dataFromApiService.setUser();
           await _dataFromApiService.setBillGroupList();
           await _dataFromApiService.setPeerList();
           // ___________________________________________________________________
