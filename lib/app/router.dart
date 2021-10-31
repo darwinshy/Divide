@@ -4,6 +4,7 @@
 // flutter pub run build_runner build --delete-conflicting-outputs
 
 import 'package:divide/screens/addBills/addbills_screenview.dart';
+import 'package:divide/screens/billView/bill_screenview.dart';
 import 'package:divide/screens/nameScreen/name_screenview.dart';
 import 'package:divide/screens/root/root_view.dart';
 import 'package:divide/screens/signUpScreens/otpScreen/otp_screenview.dart';
@@ -26,6 +27,8 @@ import 'package:stacked/stacked_annotations.dart';
   StackedRoute(path: WelcomeScreenView.routeName, page: WelcomeScreenView),
   // ___________________________________________________________________________
   StackedRoute(path: AddBillView.routeName, page: AddBillView),
+  // ___________________________________________________________________________
+  StackedRoute(path: BillView.routeName, page: BillView),
   // ___________________________________________________________________________
 ])
 class $Router {}

@@ -14,6 +14,13 @@ InputDecoration buildInputDecoration(String text, Icon icon) {
   );
 }
 
+InputDecoration buildSimpleInputDecoration(String text) {
+  return InputDecoration(
+    labelText: text,
+    counterText: "",
+  );
+}
+
 InputDecoration buildDateDecoration(Icon icon) {
   return InputDecoration(
     counterText: "",

@@ -1,6 +1,7 @@
 import 'package:divide/app/size_configuration.dart';
 import 'package:divide/model/user.dart';
 import 'package:divide/screens/addBills/addbills_screenview.dart';
+import 'package:divide/screens/billView/bill_screenview.dart';
 import 'package:divide/services/services/api_service.dart';
 import 'package:divide/services/services/auth_service.dart';
 import 'package:divide/services/services/data_from_api_service.dart';
@@ -30,6 +31,7 @@ class WelcomeScreenViewModel extends FutureViewModel<Map<String, dynamic>> {
   TextEditingController phoneNumber = TextEditingController();
   final phoneNumberFormKey = GlobalKey<FormState>();
   bool isAddingFriends = false;
+  bool isBillLoading = false;
 
   String? validatePhoneNumber(String phone) {
     return phone.isEmpty
@@ -185,6 +187,18 @@ class WelcomeScreenViewModel extends FutureViewModel<Map<String, dynamic>> {
 
   void signOut() {
     _authenticationService.signOut();
+  }
+
+  void goToBillDetails(String s) async {
+    try {
+      isBillLoading = !isBillLoading;
+      await _dataFromApi.setBill(s);
+      await _dataFromApi.setBillStatus(_dataFromApi.getUser!.sId!, s);
+      isBillLoading = !isBillLoading;
+      _navigatorService.navigateTo(BillView.routeName);
+    } catch (e) {
+      _snackBarService.showSnackbar(message: e.toString());
+    }
   }
   // __________________________________________________________________________
 }

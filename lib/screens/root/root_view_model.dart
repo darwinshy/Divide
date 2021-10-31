@@ -49,8 +49,6 @@ class RootViewModel extends BaseViewModel {
         } else {
           // ___________________________________________________________________
           await _dataFromApiService.setUser();
-          await _dataFromApiService.setBillGroupList();
-          await _dataFromApiService.setPeerList();
           // ___________________________________________________________________
           _navigatorService.clearStackAndShow(WelcomeScreenView.routeName);
         }

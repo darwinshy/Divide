@@ -1,4 +1,3 @@
-import 'package:divide/services/services/data_from_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../../services/services/auth_service.dart';
@@ -11,7 +10,6 @@ class PhoneViewModel extends BaseViewModel {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final StorageService _storageService = locator<StorageService>();
-  final DataFromApi _dataFromApiService = locator<DataFromApi>();
   // __________________________________________________________________________
   // Controller and Variables
   TextEditingController phoneNumber = TextEditingController();

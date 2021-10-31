@@ -75,8 +75,13 @@ class WelcomeScreenView extends StatelessWidget {
                           model.data!["bills"]!.isNotEmpty)
                         Column(
                           children: [
+                            if (model.isBusy)
+                              const LinearProgressIndicator(
+                                backgroundColor: Colors.teal,
+                                minHeight: 5,
+                              ),
                             SizedBox(
-                              height: SizeConfig.screenHeight! * 0.6,
+                              height: SizeConfig.screenHeight! * 0.58,
                               child: ListView.builder(
                                 primary: true,
                                 shrinkWrap: true,
@@ -90,6 +95,10 @@ class WelcomeScreenView extends StatelessWidget {
                                               BorderRadius.circular(20),
                                           color: Colors.white60),
                                       child: ListTile(
+                                        onTap: () => model.goToBillDetails(
+                                            (model.data!["bills"]![index]
+                                                    as UserBills)
+                                                .sId!),
                                         minVerticalPadding: 15,
                                         leading: const Icon(
                                             Icons.pending_actions,
@@ -101,17 +110,22 @@ class WelcomeScreenView extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const Text("Bill Name",
-                                                style: TextStyle(
-                                                    color: Colors.black87,
-                                                    fontSize: 12)),
                                             Text(
                                                 (model.data!["bills"]![index]
                                                         as UserBills)
                                                     .billName!,
                                                 style: const TextStyle(
                                                     color: Colors.black87,
-                                                    fontSize: 20))
+                                                    fontSize: 20)),
+                                            Text(
+                                                "Due date : " +
+                                                    (model.data!["bills"]![
+                                                            index] as UserBills)
+                                                        .dueDate!
+                                                        .substring(0, 10),
+                                                style: const TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 12)),
                                           ],
                                         ),
                                         trailing: Column(
