@@ -1,6 +1,8 @@
 
-## DIVIDE [Download](https://raw.githubusercontent.com/reverope/Divide/master/app-armeabi-v7a-release.apk)
+## DIVIDE 
 #### Bill sharing among friends using Flutter based application
+[download](https://raw.githubusercontent.com/reverope/Divide/master/app-armeabi-v7a-release.apk)
+
 
 ### Team
 ![Screenshot 2021-11-01 at 12-01-08 Divide_Minimum_Wagers pptx](https://user-images.githubusercontent.com/23384886/139630943-f2919185-d3d1-4ab7-ad77-3c412f9bc6f2.png)
