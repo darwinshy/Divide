@@ -7,8 +7,8 @@
 <img src="https://user-images.githubusercontent.com/23384886/139630943-f2919185-d3d1-4ab7-ad77-3c412f9bc6f2.png" width="600"/>
 
 ### Backend Repository
-Divide Server - [Repository Link](https://github.com/Dphilomath/divide)
-Repository Owner - Daniyal Mahmood
+- Divide Server - [Repository Link](https://github.com/Dphilomath/divide)
+- Repository Owner - Daniyal Mahmood ([@Dphilomath](https://github.com/Dphilomath))
 
 ### Features
 - Friends diving bills among them are organised at one place
