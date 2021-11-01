@@ -1,16 +1,29 @@
-# divide
 
-A new Flutter project.
+## DIVIDE
 
-## Getting Started
+### Team
+![Screenshot 2021-11-01 at 12-01-08 Divide_Minimum_Wagers pptx](https://user-images.githubusercontent.com/23384886/139630943-f2919185-d3d1-4ab7-ad77-3c412f9bc6f2.png)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+#### Bill sharing among friends using Flutter based application
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Available at: [Download](https://raw.githubusercontent.com/reverope/Divide/master/app-armeabi-v7a-release.apk)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Problem Solved
+- Friends diving bills among them are organised at one place
+- UPI payments directly from the app
+
+### Tech Stack:
+![Screenshot 2021-11-01 at 12-00-25 Divide_Minimum_Wagers pptx](https://user-images.githubusercontent.com/23384886/139630875-a97ff3f4-dbac-4be9-b236-a689a878e31b.png)
+
+
+### To run the project
+- Download the app and install using File Manager else, it will show "cannot install" error.
+
+### Improvements
+- UPI Payment Integration 
+- Use Firebase Cloud messaging for giving users notification of bill modifications
+- Better error handlings with proper snack bars
+- Using Firebase Crashlytics to monitor our app crashes
+
+
