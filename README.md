@@ -4,7 +4,7 @@
 [download](https://raw.githubusercontent.com/reverope/Divide/master/app-armeabi-v7a-release.apk)
 
 ### Team
-<img src="https://user-images.githubusercontent.com/23384886/139630943-f2919185-d3d1-4ab7-ad77-3c412f9bc6f2.png" width="400"/>
+<img src="https://user-images.githubusercontent.com/23384886/139630943-f2919185-d3d1-4ab7-ad77-3c412f9bc6f2.png" width="600"/>
 
 ### Backend Repository
 - [Divide Server](https://github.com/Dphilomath/divide)
@@ -17,7 +17,7 @@
 - Category based bills with their due dates
 
 ### Tech Stack:
-<img src="https://user-images.githubusercontent.com/23384886/139630875-a97ff3f4-dbac-4be9-b236-a689a878e31b.png" width="400"/>
+<img src="https://user-images.githubusercontent.com/23384886/139630875-a97ff3f4-dbac-4be9-b236-a689a878e31b.png" width="600"/>
 
 ### To run the project
 - Download the app and install using File Manager else, it will show "cannot install" error.
