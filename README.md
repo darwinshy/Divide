@@ -16,6 +16,9 @@
 ### Tech Stack:
 ![Screenshot 2021-11-01 at 12-00-25 Divide_Minimum_Wagers pptx](https://user-images.githubusercontent.com/23384886/139630875-a97ff3f4-dbac-4be9-b236-a689a878e31b.png)
 
+### Backend Repository
+- [Divide Server](https://github.com/Dphilomath/divide)
+- Repository Owner - Daniyal Mahmood
 
 ### To run the project
 - Download the app and install using File Manager else, it will show "cannot install" error.
