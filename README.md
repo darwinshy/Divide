@@ -4,8 +4,9 @@
 [Download Here](https://raw.githubusercontent.com/reverope/Divide/master/app-armeabi-v7a-release.apk)
 
 ************************************************************
-##### It may or may not work. Fix will be added soon.
-##### Once our server's account credit exhausts, app might not work.
+#### IMPORTANT
+Once our server's account credit exhausts, app might not work.
+Fix will be added soon.
 ************************************************************
 
 ### Team
