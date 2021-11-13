@@ -49,7 +49,13 @@ class NameViewModel extends BaseViewModel {
       _navigatorService.clearStackAndShow(Root.routeName);
     } else {
       setBusy(false);
-      await _authenticationService.signOut();
+      final DialogService _dialogService = locator<DialogService>();
+      await _dialogService
+          .showDialog(
+            title: 'Phone number already exists',
+            description: 'Use another number in order to continue',
+          )
+          .then((value) => _authenticationService.signOut());
     }
   }
 
