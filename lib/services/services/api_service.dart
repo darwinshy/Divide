@@ -15,7 +15,9 @@ import 'package:divide/model/user.dart';
 class APIServices {
   // ___________________________________________________________________________
   // Variables for API
-  String url = "https://divide.azurewebsites.net/";
+
+  String url = "https://divideapp.herokuapp.com/";
+  // String url = "https://divide.azurewebsites.net/";
   // String url = "http://divide.eastus.cloudapp.azure.com:3000/";
   // -------------------------------------------------------------
   // User
@@ -31,6 +33,39 @@ class APIServices {
 
   String urlBillStatus = "billStatus/";
   String urlBillStatusUpdate = "billStatus/update";
+  // ---------------------------------------------------------------------------
+  // Create a new user
+  Future<bool> pingServer() async {
+    // _________________________________________________________________________
+    try {
+      // _______________________________________________________________________
+      // URL to be called
+      var uri = Uri.parse(url);
+      log('AT SERVER PING HITTING : ' + uri.toString());
+      var request = http.Request("GET", uri);
+      // _______________________________________________________________________
+      // Preparing the data to be sent
+      request.headers
+          .addAll({'Content-Type': 'application/json; charset=UTF-8'});
+      // _______________________________________________________________________
+      // Sending the post request
+      var response = await request.send();
+      var responseString = await response.stream.bytesToString();
+      // _______________________________________________________________________
+      log("AT SERVER PING : " + responseString);
+      if (responseString.toString() == "API is up & running") {
+        return true;
+      } else {
+        return false;
+      }
+      // _______________________________________________________________________
+
+    } catch (e) {
+      log("AT GET BILLSTATUS : " + e.toString());
+      return false;
+    }
+  }
+
   // ---------------------------------------------------------------------------
   // Create a new user
   Future<User?> createUser() async {
@@ -72,7 +107,8 @@ class APIServices {
       return user;
     } catch (e) {
       log("AT CREATE USER : " + e.toString());
-      _snackBarService.showSnackbar(message: e.toString());
+      _snackBarService.showSnackbar(
+          message: "Error while creating user, try again later");
       return null;
     }
   }
@@ -125,9 +161,7 @@ class APIServices {
   Future addFriendToBill(String friendId, String billId) async {
     // _________________________________________________________________________
     // Locating Dependencies
-    final StorageService _storageService = locator<StorageService>();
     final SnackbarService _snackBarService = locator<SnackbarService>();
-    final DataFromApi _dataFromApi = locator<DataFromApi>();
     // _________________________________________________________________________
     try {
       // _______________________________________________________________________
@@ -172,7 +206,6 @@ class APIServices {
     // Locating Dependencies
     final StorageService _storageService = locator<StorageService>();
     final SnackbarService _snackBarService = locator<SnackbarService>();
-    final DataFromApi _dataFromApi = locator<DataFromApi>();
     // _________________________________________________________________________
     try {
       // _______________________________________________________________________
@@ -218,9 +251,9 @@ class APIServices {
   Future<List<BillStatus>?> getBillStatus(String userId, String billId) async {
     // _________________________________________________________________________
     // Locating Dependencies
-    final StorageService _storageService = locator<StorageService>();
+
     final SnackbarService _snackBarService = locator<SnackbarService>();
-    final DataFromApi _dataFromApi = locator<DataFromApi>();
+
     // _________________________________________________________________________
     try {
       // _______________________________________________________________________
@@ -265,9 +298,9 @@ class APIServices {
   Future updateBill(Map<String, dynamic> data) async {
     // _________________________________________________________________________
     // Locating Dependencies
-    final StorageService _storageService = locator<StorageService>();
+
     final SnackbarService _snackBarService = locator<SnackbarService>();
-    final DataFromApi _dataFromApi = locator<DataFromApi>();
+
     // _________________________________________________________________________
     try {
       // _______________________________________________________________________
@@ -302,9 +335,9 @@ class APIServices {
   Future<Bill?> getBill(String billId) async {
     // _________________________________________________________________________
     // Locating Dependencies
-    final StorageService _storageService = locator<StorageService>();
+
     final SnackbarService _snackBarService = locator<SnackbarService>();
-    final DataFromApi _dataFromApi = locator<DataFromApi>();
+
     // _________________________________________________________________________
     try {
       // _______________________________________________________________________

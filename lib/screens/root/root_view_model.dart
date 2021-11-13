@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:divide/screens/nameScreen/name_screenview.dart';
+import 'package:divide/screens/root/root_view.dart';
 import 'package:divide/screens/signUpScreens/phoneNumberScreen/phone_screenview.dart';
 import 'package:divide/screens/welcomeScreen/welcome_screenview.dart';
+import 'package:divide/services/services/api_service.dart';
 import 'package:divide/services/services/data_from_api_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -18,16 +20,22 @@ class RootViewModel extends BaseViewModel {
       locator<AuthenticationService>();
   final StorageService _storageService = locator<StorageService>();
   final DataFromApi _dataFromApiService = locator<DataFromApi>();
-  final SnackbarService _snackBarService = locator<SnackbarService>();
-
+  final APIServices _aPIServices = locator<APIServices>();
   // __________________________________________________________________________
   // Reroutes the user
 
   Future handleStartupLogic() async {
     try {
+      setBusy(false);
       // ---------------------------------------------------------------------
       // Check whether user has logged in or not
       var hasLoggedIn = await _authenticationService.isUserLoggedIn();
+      var isServerUp = await _aPIServices.pingServer();
+
+      if (!isServerUp) {
+        setBusy(true);
+        return;
+      }
       // ---------------------------------------------------------------------
 
       await _storageService.initLocalStorages();
@@ -57,7 +65,12 @@ class RootViewModel extends BaseViewModel {
       }
     } catch (e) {
       log("At Handle Startup Logic : " + e.toString());
-      _snackBarService.showSnackbar(message: e.toString());
+      // _snackBarService.showSnackbar(message: e.toString());
+      setBusy(true);
     }
+  }
+
+  void refresh() {
+    _navigatorService.clearStackAndShow(Root.routeName);
   }
 }

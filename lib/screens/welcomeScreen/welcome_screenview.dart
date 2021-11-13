@@ -45,9 +45,21 @@ class WelcomeScreenView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            model.data != null ? model.data!["name"]! : "",
-                            style: const TextStyle(fontSize: 28),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                model.data != null ? model.data!["name"]! : "",
+                                style: const TextStyle(fontSize: 28),
+                              ),
+                              InkWell(
+                                onTap: () => model.signOut(),
+                                child: const Text(
+                                  "Log out",
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              )
+                            ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,

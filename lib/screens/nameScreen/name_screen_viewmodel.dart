@@ -1,6 +1,7 @@
 import 'package:divide/model/user.dart';
 import 'package:divide/screens/root/root_view.dart';
 import 'package:divide/services/services/api_service.dart';
+import 'package:divide/services/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,6 +14,8 @@ class NameViewModel extends BaseViewModel {
   final NavigationService _navigatorService = locator<NavigationService>();
   final StorageService _storageService = locator<StorageService>();
   final APIServices _aPIServices = locator<APIServices>();
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
   // _________________________________________________________________________
   // Controllers
   TextEditingController name = TextEditingController();
@@ -44,8 +47,10 @@ class NameViewModel extends BaseViewModel {
     if (user != null) {
       _storageService.setUID(user.sId!);
       _navigatorService.clearStackAndShow(Root.routeName);
+    } else {
+      setBusy(false);
+      await _authenticationService.signOut();
     }
-    setBusy(false);
   }
 
   // _________________________________________________________________________

@@ -13,13 +13,22 @@ class Root extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return ViewModelBuilder<RootViewModel>.reactive(
-      builder: (context, child, model) {
+      builder: (context, model, child) {
         return Scaffold(
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Center(child: CircularProgressIndicator()),
+                !model.isBusy
+                    ? const Center(child: CircularProgressIndicator())
+                    : Column(
+                        children: [
+                          IconButton(
+                              onPressed: () => model.refresh(),
+                              icon: const Icon(Icons.refresh_outlined)),
+                          const Text("It seems like our servers are sleeping"),
+                        ],
+                      ),
                 Column(
                   children: const [
                     Text("made by"),
