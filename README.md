@@ -3,7 +3,10 @@
 #### Bill sharing among friends using Flutter based application
 [Download Here](https://raw.githubusercontent.com/reverope/Divide/master/app-armeabi-v7a-release.apk)
 
-##### Initially we used Azure CS for hosting our server. It may or may not work. Fix will be added soon.
+************************************************************
+##### It may or may not work. Fix will be added soon.
+##### Once our server's account credit exhausts, app might not work.
+************************************************************
 
 ### Team
 <img src="https://user-images.githubusercontent.com/23384886/139630943-f2919185-d3d1-4ab7-ad77-3c412f9bc6f2.png" width="600"/>
